@@ -1,0 +1,50 @@
+<div class="sidebar-alumno">
+  <!-- Acordeón principal -->
+  <button class="accordion" id="panelToggle" type="button">📂 Panel Alumno</button>
+  <div id="panelAlumnoContent" class="hidden-panel">
+
+    <!-- Subacordeones -->
+    <button class="accordion" type="button">📚 Mis Notas</button>
+    <div class="panel">
+      <a href="{{ url_for('alumno.ver_notas') }}">📘 Ver mis notas</a>
+    </div>
+
+    <button class="accordion" type="button">✅ Mis Asistencias</button>
+    <div class="panel">
+      <a href="{{ url_for('alumno.ver_asistencias') }}">📋 Ver asistencias</a>
+    </div>
+
+    <!-- Botón Cerrar sesión -->
+    <button class="cerrar-sesion-btn" onclick="location.href='/logout'">🔴 Cerrar sesión</button>
+  </div>
+</div>
+
+
+
+<script>
+  const panelToggle = document.getElementById("panelToggle");
+  const panelContent = document.getElementById("panelAlumnoContent");
+
+  panelToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    panelContent.classList.toggle("hidden-panel");
+  });
+
+  const subAcordeones = document.querySelectorAll(".sidebar-alumno .accordion:not(#panelToggle)");
+  subAcordeones.forEach((acc) => {
+    acc.addEventListener("click", function (e) {
+      e.stopPropagation();
+      e.preventDefault(); // ⚠️ esta línea es la que evita redireccionar por error
+
+      const panel = this.nextElementSibling;
+      if (panel && panel.classList.contains("panel")) {
+        panel.style.display = (panel.style.display === "block") ? "none" : "block";
+      }
+    });
+  });
+</script>
+
+
+
+
+

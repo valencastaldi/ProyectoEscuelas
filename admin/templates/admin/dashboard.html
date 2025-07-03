@@ -1,0 +1,67 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Panel Admin{% endblock %}
+
+{% block sidebar %}
+  {% include 'admin/sidebar_admin.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+  <div class="dashboard-header">
+    <div class="dashboard-title-container">
+      <h1 class="dashboard-title">Panel de Administración</h1>
+      <p class="dashboard-welcome">Bienvenido{{ nombre and ', ' ~ nombre|capitalize }}, accedé a la gestión integral del sistema educativo.</p>
+    </div>
+    <div class="dashboard-divider"></div>
+    <p class="dashboard-sub">Desde aquí podés administrar usuarios, materias, exámenes y más.</p>
+  </div>
+
+  <div class="cards-wrapper">
+    <div class="cards-grid">
+      <div class="card stat alumnos">
+        <i class="bi bi-people-fill icon"></i>
+        <div class="label">Alumnos</div>
+        <div class="value">{{ total_alumnos }}</div>
+      </div>
+      <div class="card stat profesores">
+        <i class="bi bi-person-badge-fill icon"></i>
+        <div class="label">Profesores</div>
+        <div class="value">{{ total_profesores }}</div>
+      </div>
+      <div class="card stat materias">
+        <i class="bi bi-book-fill icon"></i>
+        <div class="label">Materias</div>
+        <div class="value">{{ total_materias }}</div>
+      </div>
+      <div class="card stat examenes">
+        <i class="bi bi-journal-check icon"></i>
+        <div class="label">Exámenes</div>
+        <div class="value">{{ total_examenes }}</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="quick-access">
+    <a href="{{ url_for('admin.ver_materias') }}" class="btn quick">📚 Materias</a>
+    <a href="{{ url_for('admin.crear_usuario') }}" class="btn quick">👤 Crear Usuario</a>
+    <a href="{{ url_for('admin.crear_examen') }}" class="btn quick">📝 Registrar Examen</a>
+  </div>
+
+  <div class="recent-actions">
+    <h4>Últimas acciones</h4>
+    <ul>
+      {% for desc, tipo, fecha in acciones %}
+        <li>
+          <span class="tag {{ tipo }}">{{ desc }}</span>
+          <span class="timestamp">{{ fecha.strftime('%d/%m %H:%M') }}</span>
+        </li>
+      {% else %}
+        <li class="text-muted">No hay acciones recientes.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

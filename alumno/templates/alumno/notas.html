@@ -1,0 +1,35 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Mis Notas{% endblock %}
+
+{% block panel_title %}
+  Mis Notas
+{% endblock %}
+
+{% block sidebar %}
+  {% include 'alumno/sidebar_menu_alumno.html' %}
+{% endblock %}
+
+{% block content %}
+  <h4>Listado de notas</h4>
+  {% if notas %}
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>Materia</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for nota in notas %}
+          <tr>
+            <td>{{ nota.split('(')[0].strip() }}</td>
+            <td>{{ nota.split('(')[1].replace(')', '') }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay notas disponibles.</p>
+  {% endif %}
+{% endblock %}
