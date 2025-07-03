@@ -1,37 +1,52 @@
-# -*- coding: utf-8 -*-
-
-from psycopg2 import pool
-import sys
-from backend.logger_base import log
-from contextlib import contextmanager
+import psycopg2
+import psycopg2.extras
 import os
+from psycopg2 import pool
+from contextlib import contextmanager
+import sys
+from backend.logger_base import log  # Si usás logger, mantenelo
 
 class Conexion:
-    _DATABASE = os.environ.get('DB_NAME', 'postgres')
-    _USERNAME = os.environ.get('DB_USER', 'postgres')
-    _PASSWORD = os.environ.get('DB_PASSWORD', '')
-    _DB_PORT = os.environ.get('DB_PORT', '5432')
-    _HOST = os.environ.get('DB_HOST', '127.0.0.1')
+    _pool = None
     _MIN_CON = 1
     _MAX_CON = 20
-    _pool = None
 
     @classmethod
     def obtenerPool(cls):
         if cls._pool is None:
             try:
-                cls._pool = pool.SimpleConnectionPool(cls._MIN_CON, cls._MAX_CON,
-                                                       host=cls._HOST,
-                                                       user=cls._USERNAME,
-                                                       password=cls._PASSWORD,
-                                                       port=cls._DB_PORT,
-                                                       database=cls._DATABASE)
+                # Primero intenta con DATABASE_URL (opción recomendada en Render)
+                database_url = os.environ.get('DATABASE_URL')
+                if database_url:
+                    cls._pool = pool.SimpleConnectionPool(
+                        cls._MIN_CON,
+                        cls._MAX_CON,
+                        dsn=database_url,
+                        cursor_factory=psycopg2.extras.DictCursor
+                    )
+                else:
+                    # Si no hay DATABASE_URL, usa las variables separadas
+                    db_host = os.environ.get('DB_HOST', '127.0.0.1')
+                    db_name = os.environ.get('DB_NAME', 'postgres')
+                    db_user = os.environ.get('DB_USER', 'postgres')
+                    db_password = os.environ.get('DB_PASSWORD', '')
+                    db_port = os.environ.get('DB_PORT', '5432')
+
+                    cls._pool = pool.SimpleConnectionPool(
+                        cls._MIN_CON,
+                        cls._MAX_CON,
+                        host=db_host,
+                        database=db_name,
+                        user=db_user,
+                        password=db_password,
+                        port=db_port,
+                        cursor_factory=psycopg2.extras.DictCursor
+                    )
                 log.debug(f'Creación del pool exitosa {cls._pool}')
                 return cls._pool
             except Exception as e:
                 log.error("Ocurrió un error al obtener el pool: %s", repr(e))
-
-            sys.exit()
+                sys.exit()
         else:
             return cls._pool
 
