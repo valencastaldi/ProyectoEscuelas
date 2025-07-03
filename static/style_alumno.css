@@ -1,0 +1,150 @@
+/* === Sidebar Acordeón Alumno === */
+.sidebar-alumno {
+  width: 250px;
+  background-color: #f9f9f9;
+  padding: 15px 10px;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Botones principales del acordeón */
+.sidebar-alumno .accordion {
+  background-color: #e6f0ff;
+  color: #000000;
+  font-weight: bold;
+  padding: 12px 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.sidebar-alumno .accordion:hover {
+  background-color: #d0e3ff;
+}
+
+/* Paneles desplegables */
+.sidebar-alumno .panel {
+  display: none;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding-left: 15px;
+  padding-top: 8px;
+  border-left: 2px solid #007bff;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.sidebar-alumno .panel a {
+  display: block;
+  color: #333333;
+  font-size: 14px;
+  padding: 6px 0;
+  text-decoration: none;
+}
+
+.sidebar-alumno .panel a:hover {
+  text-decoration: underline;
+}
+
+/* === Botón Cerrar sesión === */
+.sidebar-alumno .cerrar-sesion-btn {
+  margin-top: 30px;
+  background-color: #e74c3c;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sidebar-alumno .cerrar-sesion-btn:hover {
+  background-color: #c0392b;
+}
+
+/* === Cronograma semanal === */
+.tabla-cronograma {
+  margin-left: 270px; /* separa del sidebar */
+  padding: 20px;
+}
+
+.tabla-cronograma table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-cronograma th,
+.tabla-cronograma td {
+  border: 1px solid #cccccc;
+  padding: 12px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.tabla-cronograma th {
+  background-color: #2F80ED;
+  color: white;
+  font-weight: bold;
+}
+
+.tabla-cronograma td {
+  background-color: #f9f9f9;
+}
+
+.tabla-cronograma td:first-child {
+  background-color: #e6f0ff;
+  font-weight: bold;
+}
+/* desplazar main a la derecha */
+body {
+  margin: 0;
+}
+
+.flex-grow-1 {
+  margin-left: 270px;
+}
+.hidden-panel {
+  display: none;
+}
+.hidden-panel {
+  display: none;
+}
+
+.sidebar-alumno a {
+  display: block;
+  padding: 10px 15px;
+  background-color: #e6f0ff;
+  color: #000;
+  margin-top: 5px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-alumno a:hover {
+  background-color: #d0e3ff;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+}
+
