@@ -1,0 +1,54 @@
+{% extends 'base_dashboard.html' %}
+
+{% block panel_title %}
+Cronograma por Curso
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <form method="get" action="{{ url_for('profesor.cronograma_profesor') }}" class="mb-4">
+    <label for="curso_id" class="form-label">Seleccionar curso:</label>
+    <select name="curso_id" id="curso_id" class="form-select w-auto d-inline" onchange="this.form.submit()">
+      {% for curso in cursos %}
+        <option value="{{ curso.id }}" {% if curso.id == curso_seleccionado %}selected{% endif %}>
+          {{ curso.nombre }}
+        </option>
+      {% endfor %}
+    </select>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle text-center">
+      <thead class="table-primary">
+        <tr>
+          <th>Hora / Día</th>
+          {% for dia in dias_semana %}
+            <th>{{ dia }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for hora in horas %}
+          <tr>
+            <th class="table-light">{{ hora }}</th>
+            {% for dia in dias_semana %}
+              {% set eventos = cronograma[dia][hora] %}
+              <td>
+                {% if eventos %}
+                  {% for ev in eventos %}
+                    <div class="badge {% if ev.tipo == 'examen' %}bg-danger{% else %}bg-info text-dark{% endif %} mb-1">
+                      {{ ev.nombre }}
+                    </div><br>
+                  {% endfor %}
+                {% else %}
+                  <span class="text-muted">-</span>
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
