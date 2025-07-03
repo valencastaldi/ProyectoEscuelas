@@ -4,13 +4,14 @@ from psycopg2 import pool
 import sys
 from backend.logger_base import log
 from contextlib import contextmanager
+import os
 
 class Conexion:
-    _DATABASE = 'postgres'
-    _USERNAME = 'postgres'
-    _PASSWORD = 'tinocastaldi1'
-    _DB_PORT = '5432'
-    _HOST = '127.0.0.1'
+    _DATABASE = os.environ.get('DB_NAME', 'postgres')
+    _USERNAME = os.environ.get('DB_USER', 'postgres')
+    _PASSWORD = os.environ.get('DB_PASSWORD', '')
+    _DB_PORT = os.environ.get('DB_PORT', '5432')
+    _HOST = os.environ.get('DB_HOST', '127.0.0.1')
     _MIN_CON = 1
     _MAX_CON = 20
     _pool = None
