@@ -1,0 +1,88 @@
+<!-- Overlay -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<!-- Botón menú igual al admin -->
+<button id="menuToggleBtn" class="menu-toggle" aria-label="Abrir menú">
+  <i class="bi bi-list"></i>
+</button>
+
+<!-- Sidebar desplegable -->
+<div class="sidebar-panel" id="sidebarPanel">
+  <div class="sidebar-content">
+    <a href="{{ url_for('profesor.dashboard') }}" class="dashboard-link">
+      <i class="bi bi-house-door sidebar-icon"></i> Volver al Dashboard
+    </a>
+
+    <button class="accordion-section">
+      <i class="bi bi-journal-bookmark sidebar-icon"></i> Notas
+    </button>
+    <div class="panel-links">
+      <a href="{{ url_for('profesor.ver_notas') }}"><i class="bi bi-journal-text sidebar-icon"></i> Ver notas</a>
+      <a href="{{ url_for('profesor.agregar_nota') }}"><i class="bi bi-plus-circle sidebar-icon"></i> Agregar nota</a>
+    </div>
+
+    <button class="accordion-section">
+      <i class="bi bi-clipboard2-check sidebar-icon"></i> Asistencias
+    </button>
+    <div class="panel-links">
+      <a href="{{ url_for('profesor.modificar_asistencia') }}"><i class="bi bi-list-check sidebar-icon"></i> Ver asistencias</a>
+      <a href="{{ url_for('profesor.registrar_asistencia') }}"><i class="bi bi-pencil-square sidebar-icon"></i> Registrar asistencia</a>
+    </div>
+
+    <button class="accordion-section">
+      <i class="bi bi-journal-check sidebar-icon"></i> Exámenes
+    </button>
+    <div class="panel-links">
+      <a href="{{ url_for('profesor.crear_examen') }}"><i class="bi bi-file-earmark-plus sidebar-icon"></i> Crear examen</a>
+      <a href="{{ url_for('profesor.ver_examenes') }}"><i class="bi bi-clipboard2-data sidebar-icon"></i> Ver exámenes</a>
+    </div>
+
+    <a href="{{ url_for('auth.logout') }}" class="cerrar-sesion">
+      <i class="bi bi-box-arrow-right sidebar-icon"></i> Cerrar sesión
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menuToggleBtn");
+    const sidebar = document.getElementById("sidebarPanel");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = sidebar.classList.contains("open");
+      sidebar.classList.toggle("open", !isOpen);
+      overlay.style.display = isOpen ? "none" : "block";
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.style.display = "none";
+    });
+
+    // Acordeón exclusivo, permite cerrar la misma tarjeta y animación de despliegue
+    document.querySelectorAll(".accordion-section").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const panel = btn.nextElementSibling;
+        const isActive = panel.classList.contains("active");
+        document.querySelectorAll(".panel-links").forEach(p => {
+          if (p !== panel) {
+            p.classList.remove("active");
+            p.style.maxHeight = null;
+          }
+        });
+        if (isActive) {
+          panel.classList.remove("active");
+          panel.style.maxHeight = null;
+        } else {
+          panel.classList.add("active");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+
+    document.querySelectorAll(".panel-links.active").forEach(panel => {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    });
+  });
+</script>

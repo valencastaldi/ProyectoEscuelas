@@ -1,0 +1,50 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Panel Alumno{% endblock %}
+
+{% block panel_title %}Bienvenido, {{ nombre }}{% endblock %}
+
+{% block sidebar %}
+  {% include 'alumno/sidebar_alumno.html' %}
+{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">👋 Hola, {{ nombre }}. Este es tu panel.</h2>
+
+<h2>📅 Cronograma semanal</h2>
+
+<div class="tabla-cronograma">
+  <table>
+    <thead>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>07:00 - 07:45</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>07:45 - 08:30</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>08:30 - 09:15</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>09:15 - 10:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>10:15 - 11:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>11:00 - 11:45</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>11:45 - 12:30</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>12:30 - 13:15</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block bottom_panel %}
+<h5 class="mt-4">📊 Últimas calificaciones</h5>
+<ul>
+  <li>Matemática: 8.50</li>
+  <li>Historia: 7.00</li>
+  <li>Lengua: 9.00</li>
+</ul>
+{% endblock %}
+
