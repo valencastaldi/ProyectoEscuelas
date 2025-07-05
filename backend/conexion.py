@@ -15,33 +15,24 @@ class Conexion:
     def obtenerPool(cls):
         if cls._pool is None:
             try:
-                # Primero intenta con DATABASE_URL (opción recomendada en Render)
-                database_url = os.environ.get('DATABASE_URL')
-                if database_url:
-                    cls._pool = pool.SimpleConnectionPool(
-                        cls._MIN_CON,
-                        cls._MAX_CON,
-                        dsn=database_url,
-                        cursor_factory=psycopg2.extras.DictCursor
-                    )
-                else:
-                    # Si no hay DATABASE_URL, usa las variables separadas
-                    db_host = os.environ.get('DB_HOST', '127.0.0.1')
-                    db_name = os.environ.get('DB_NAME', 'postgres')
-                    db_user = os.environ.get('DB_USER', 'postgres')
-                    db_password = os.environ.get('DB_PASSWORD', '')
-                    db_port = os.environ.get('DB_PORT', '5432')
+                db_host = os.environ.get('DB_HOST', '127.0.0.1')
+                db_name = os.environ.get('DB_NAME', 'postgres')
+                db_user = os.environ.get('DB_USER', 'postgres')
+                db_password = os.environ.get('DB_PASSWORD', '')
+                db_port = os.environ.get('DB_PORT', '5432')
+                db_sslmode = os.environ.get('DB_SSLMODE', 'require')  # default "require" para Render
 
-                    cls._pool = pool.SimpleConnectionPool(
-                        cls._MIN_CON,
-                        cls._MAX_CON,
-                        host=db_host,
-                        database=db_name,
-                        user=db_user,
-                        password=db_password,
-                        port=db_port,
-                        cursor_factory=psycopg2.extras.DictCursor
-                    )
+                cls._pool = pool.SimpleConnectionPool(
+                    cls._MIN_CON,
+                    cls._MAX_CON,
+                    host=db_host,
+                    database=db_name,
+                    user=db_user,
+                    password=db_password,
+                    port=db_port,
+                    sslmode=db_sslmode,
+                    cursor_factory=psycopg2.extras.DictCursor
+                )
                 log.debug(f'Creación del pool exitosa {cls._pool}')
                 return cls._pool
             except Exception as e:
