@@ -29,7 +29,19 @@
       <p class="login-subtitle">Facilitando el aprendizaje para todos</p>
     </div>
 
-    <form class="login-form">
+    <!-- Mostrar mensajes flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Formulario corregido con method POST y action -->
+    <form class="login-form" method="POST" action="{{ url_for('auth.login') }}">
       <div class="form-group">
         <label for="dni" class="form-label">DNI</label>
         <input type="text" id="dni" name="dni" class="form-input" placeholder="Ingrese su DNI" required>
