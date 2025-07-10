@@ -8,38 +8,69 @@
 </head>
 <body class="login-page">
   <div class="login-container">
-    <h1>Bienvenido a <strong>MiEscuela</strong></h1>
-    <p class="sub">Facilitando el aprendizaje para todos</p>
+    <div class="login-brand">
+      <svg class="book-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Portada minimalista -->
+        <path class="book-cover" d="M30,20 L70,20 C73,20 75,22 75,25 L75,75 C75,78 73,80 70,80 L30,80 C27,80 25,78 25,75 L25,25 C25,22 27,20 30,20 Z"
+              fill="#1976D2" stroke="#0D47A1" stroke-width="0.8" rx="2" ry="2"/>
 
-    <!-- ✅ Mensaje flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="flash-message {{ category }}" style="color: red; font-weight: bold; margin-bottom: 1rem;">
-            {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+        <!-- Lomo estilizado -->
+        <rect class="book-spine" x="25" y="20" width="5" height="60" fill="#0D47A1" rx="1" ry="1"/>
 
-    <form action="{{ url_for('auth.login') }}" method="post">
+        <!-- Líneas de páginas simplificadas -->
+        <line x1="35" y1="30" x2="65" y2="30" stroke="#E3F2FD" stroke-width="1.5"/>
+        <line x1="35" y1="40" x2="65" y2="40" stroke="#E3F2FD" stroke-width="1.5"/>
+        <line x1="35" y1="50" x2="65" y2="50" stroke="#E3F2FD" stroke-width="1.5"/>
+        <line x1="35" y1="60" x2="65" y2="60" stroke="#E3F2FD" stroke-width="1.5"/>
+        <line x1="35" y1="70" x2="65" y2="70" stroke="#E3F2FD" stroke-width="1.5"/>
+      </svg>
+
+      <h1 class="login-title">Bienvenido a <span>MiEscuela</span></h1>
+      <p class="login-subtitle">Facilitando el aprendizaje para todos</p>
+    </div>
+
+    <form class="login-form">
       <div class="form-group">
-        <label for="dni">DNI</label>
-        <input type="text" id="dni" name="dni" placeholder="Ingrese su DNI" required>
+        <label for="dni" class="form-label">DNI</label>
+        <input type="text" id="dni" name="dni" class="form-input" placeholder="Ingrese su DNI" required>
       </div>
+
       <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+          <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+            <span class="show-text">Mostrar</span>
+            <span class="hide-text" style="display:none">Ocultar</span>
+          </button>
+        </div>
       </div>
-      <button class="login-button" type="submit">Iniciar sesión</button>
+
+      <button type="submit" class="btn-login">Iniciar sesión</button>
     </form>
 
-    <div class="register-link">
-      ¿Eres alumno nuevo? <a href="{{ url_for('auth.registro') }}">Crear cuenta</a>
+    <div class="login-links">
+      ¿Eres alumno nuevo? <a href="{{ url_for('auth.registro') }}" class="login-link">Crear cuenta</a>
     </div>
   </div>
+
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function() {
+      const input = document.getElementById('password');
+      const showText = this.querySelector('.show-text');
+      const hideText = this.querySelector('.hide-text');
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        showText.style.display = 'none';
+        hideText.style.display = 'inline';
+      } else {
+        input.type = 'password';
+        showText.style.display = 'inline';
+        hideText.style.display = 'none';
+      }
+      input.focus();
+    });
+  </script>
 </body>
 </html>
-<body class="login-page">
-
-
