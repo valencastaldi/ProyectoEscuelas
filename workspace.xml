@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fcb6295-f67b-4868-a12e-b0e7120b29e6" name="Changes" comment="03/07" />
+    <list default="true" id="5fcb6295-f67b-4868-a12e-b0e7120b29e6" name="Changes" comment="03/07">
+      <change beforePath="$PROJECT_DIR$/.idea" beforeDir="false" afterPath="$PROJECT_DIR$/.idea" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/conexion.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/conexion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +28,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;valencastaldi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/valencastaldi/ProyectoEscuelas.git&quot;,
+    &quot;accountId&quot;: &quot;a8deb513-0f15-40a0-be52-2b33592dd14e&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -33,30 +51,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.app.executor": "Run",
-    "Python.asistencias.executor": "Run",
-    "Python.interfaz.executor": "Run",
-    "Python.logger_base.executor": "Run",
-    "Python.mini_test.executor": "Run",
-    "Python.notas.executor": "Run",
-    "Python.routes.executor": "Run",
-    "Python.test_project.executor": "Run",
-    "Python.test_usuarios.executor": "Run",
-    "Python.usuarioDAO.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/apps/ProjectoEcuelas/static",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.asistencias.executor&quot;: &quot;Run&quot;,
+    &quot;Python.interfaz.executor&quot;: &quot;Run&quot;,
+    &quot;Python.logger_base.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mini_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.routes.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_project.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_usuarios.executor&quot;: &quot;Run&quot;,
+    &quot;Python.usuarioDAO.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/apps/ProjectoEcuelas/backend&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\apps\ProjectoEcuelas\backend" />
       <recent name="D:\apps\ProjectoEcuelas\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -120,8 +139,43 @@
       <option name="project" value="LOCAL" />
       <updated>1751570849059</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="03/07">
+      <option name="closed" value="true" />
+      <created>1751571085437</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751571085437</updated>
+    </task>
+    <task id="LOCAL-00003" summary="03/07">
+      <option name="closed" value="true" />
+      <created>1751571203317</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1751571203317</updated>
+    </task>
+    <task id="LOCAL-00004" summary="03/07">
+      <option name="closed" value="true" />
+      <created>1751571726453</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1751571726453</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="03/07" />
